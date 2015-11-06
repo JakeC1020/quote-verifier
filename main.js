@@ -15,7 +15,7 @@ app.get('/api', function (req, res) {
 	async.waterfall([
 		function (callback) {
 			var queryVars = req.query;
-			if (false) {
+			if (!queryVars.author || !queryVars.quote) {
 				// query vars not specified correctly
 				callback(true, queryVars);
 			}
@@ -30,14 +30,21 @@ app.get('/api', function (req, res) {
 		
 		], 
 		function (error, jsonResults) { // Function to call at end of waterfall
-		if (error) {
-			// Send default error JSON suggesting user lookup quote on own
-		}
-		else {
+			res.setHeader('Content-Type', 'application/json');
+			var result;
+			if (error) {
+				// Send default error JSON suggesting user lookup quote on own
+				result = JSON.stringify({
+					"Error": "true"
+				});
+			}
+			else {
+				result = jsonResults;
+			}
+			
 			res.send(result);
-		}
-	});	
-});
+		});	
+	});
 
 app.listen('8081');
 
