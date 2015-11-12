@@ -4,6 +4,7 @@ var fs = require('fs');
 var request = require('request');
 var cheerio = require('cheerio');
 var async = require('async');
+var cors = require('cors');
 // Personal modules
 var scraper = require('./lib/scraper');
 
@@ -11,7 +12,7 @@ var app = express();
 
 var port = process.env.PORT || 8080;
 
-app.get('/api', function (req, res) {
+app.get('/api', cors(),  function (req, res) {
 	// get url query vars and pass to scraper
 	
 	async.waterfall([
