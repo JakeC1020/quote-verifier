@@ -14,6 +14,8 @@ var port = process.env.PORT || 8080;
 
 app.options('/api', cors());
 
+app.use(express.static(__dirname + '/public'));
+
 app.get('/api', cors(),  function (req, res) {
 	// get url query vars and pass to scraper
 	
@@ -40,7 +42,7 @@ app.get('/api', cors(),  function (req, res) {
 			if (error) {
 				// Send default error JSON suggesting user lookup quote on own
 				result = JSON.stringify({
-					"Error": "true"
+					"error": "true"
 				});
 			}
 			else {
