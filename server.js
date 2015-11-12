@@ -9,6 +9,8 @@ var scraper = require('./lib/scraper');
 
 var app = express();
 
+var port = process.env.PORT || 8080;
+
 app.get('/api', function (req, res) {
 	// get url query vars and pass to scraper
 	
@@ -50,8 +52,8 @@ app.get('*', function (req, res) {
 	res.sendStatus(404);
 });
 
-app.listen('8081');
+app.listen(port);
 
-console.log('Server running on port 8081');
+console.log('Server running on port ' + port);
 
 exports = module.exports = app;
