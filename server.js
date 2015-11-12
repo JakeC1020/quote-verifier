@@ -12,6 +12,8 @@ var app = express();
 
 var port = process.env.PORT || 8080;
 
+app.options('/api', cors());
+
 app.get('/api', cors(),  function (req, res) {
 	// get url query vars and pass to scraper
 	
