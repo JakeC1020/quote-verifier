@@ -50,6 +50,9 @@ app.get('/api', cors(),  function (req, res) {
 		});	
 	});
 
+app.get('/', function(req,res) {
+	res.sendFile('index.html');
+});
 app.get('*', function (req, res) {
 	res.sendStatus(404);
 });
