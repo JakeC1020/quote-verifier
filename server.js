@@ -34,7 +34,6 @@ app.get('/api', cors(),  function (req, res) {
 		
 		], 
 		function (error, jsonResults) { // Function to call at end of waterfall
-			res.setHeader('Content-Type', 'application/json');
 			var result;
 			if (error) {
 				// Send default error JSON suggesting user lookup quote on own
@@ -46,7 +45,7 @@ app.get('/api', cors(),  function (req, res) {
 				result = jsonResults;
 			}
 			
-			res.send(result);
+			res.json(result);
 		});	
 	});
 
