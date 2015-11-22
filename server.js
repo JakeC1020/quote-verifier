@@ -33,16 +33,16 @@ app.get('/api', cors(),  function (req, res) {
 		scraper.calcAuthenticity, // Passes JSON string to callback
 		
 		], 
-		function (error, jsonResults) { // Function to call at end of waterfall
+		function (error, objectResults) { // Function to call at end of waterfall
 			var result;
 			if (error) {
 				// Send default error JSON suggesting user lookup quote on own
-				result = JSON.stringify({
-					"error": "true"
-				});
+				result = {
+					"error" : "true"
+				};
 			}
 			else {
-				result = jsonResults;
+				result = objectResults;
 			}
 			
 			res.json(result);
